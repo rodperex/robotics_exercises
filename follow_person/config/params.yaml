@@ -1,0 +1,12 @@
+person_follower_node:
+  ros__parameters:
+    use_sim_time: false
+    min_lin: -0.2
+    max_lin: 0.2
+    min_rot: -0.6
+    max_rot: 0.6
+    limit_distance: 1.0
+
+detection_tf_publisher:
+  ros__parameters:
+    use_sim_time: false

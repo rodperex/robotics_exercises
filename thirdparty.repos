@@ -1,0 +1,9 @@
+repositories:
+  thirdparty/yolo_ros:
+    type: git
+    url: https://github.com/mgonzs13/yolo_ros.git
+    version: main
+  thirdparty/groot:
+    type: git
+    url: https://github.com/BehaviorTree/Groot
+    version: master
