@@ -73,6 +73,9 @@ HSVFilterNode::HSVFilterNode()
   detection_pub_ = create_publisher<vision_msgs::msg::Detection2DArray>(
     "output_detection_2d", 100);
 
+  atractive_vector_pub_ = create_publisher<geometry_msgs::msg::Vector3>(
+    "attr_vector", 20);  
+
   declare_parameter("min_h", h_);
   declare_parameter("min_s", s_);
   declare_parameter("min_v", v_);
@@ -196,6 +199,7 @@ HSVFilterNode::publish_detection(
 void
 HSVFilterNode::image_callback(const sensor_msgs::msg::Image::ConstSharedPtr & image)
 {
+  geometry_msgs::msg::Vector3 atractive_vector;
   if (model_ == nullptr) {
     RCLCPP_WARN(get_logger(), "Camera info not received yet");
     return;
@@ -223,18 +227,30 @@ HSVFilterNode::image_callback(const sensor_msgs::msg::Image::ConstSharedPtr & im
   cv::Rect bbx = cv::boundingRect(image_filtered);
   if (bbx.width == 0 || bbx.height == 0) {
     RCLCPP_WARN(get_logger(), "Object not detected");
+    atractive_vector.x = 0.0;
+    atractive_vector.y = 0.0;
+    atractive_vector.z = 0.0;
+    atractive_vector_pub_->publish(atractive_vector);
     return;
   }
 
+  
   cv::Point2d point = get_detected_center(image_filtered);
 
+  
   if (model_->cameraInfo().distortion_model != "") {
     auto [yaw, pitch] = get_detected_angles(point, model_);
+    atractive_vector.x = std::cos(yaw);
+    atractive_vector.y = std::sin(yaw);
+    atractive_vector.z = 0.0;
+    atractive_vector_pub_->publish(atractive_vector);
 
     RCLCPP_INFO(
       get_logger(), "Center at pos = (%lf, %lf) angle = [%f, %f]", point.x, point.y, yaw, pitch);
   }
   publish_detection(image, point, bbx);
+
+  
 }
 
 }  // namespace camera

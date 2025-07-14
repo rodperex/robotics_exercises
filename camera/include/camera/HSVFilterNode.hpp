@@ -23,6 +23,7 @@
 #include "sensor_msgs/msg/image.hpp"
 #include "sensor_msgs/msg/camera_info.hpp"
 #include "vision_msgs/msg/detection2_d_array.hpp"
+#include "geometry_msgs/msg/vector3.hpp"
 
 #include "image_geometry/pinhole_camera_model.hpp"
 
@@ -59,6 +60,7 @@ private:
   image_transport::Subscriber image_sub_;
   rclcpp::Subscription<sensor_msgs::msg::CameraInfo>::SharedPtr camera_info_sub_;
   rclcpp::Publisher<vision_msgs::msg::Detection2DArray>::SharedPtr detection_pub_;
+  rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr atractive_vector_pub_;
 
   std::shared_ptr<image_geometry::PinholeCameraModel> model_;
 };
