@@ -1,7 +1,7 @@
 # Práctica 5: Búsqueda y seguimiento de una pelota
 Crea una aplicación en ROS 2 que haga que un robot busque y siga una pelota de un color característico, esquivando los obstáculos que se encuentre en su camino, usando VFF.
 
-[](vff.jpg)
+![](vff.jpg)
 
 - Debes crear un paquete que tenga un nodo que use la salida de los nodos que ya existen en
 https://github.com/URJC-teaching/asr-clase/tree/main/sensors, con ligeras modificaciones. No debes copiar ni
