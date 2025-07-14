@@ -2,7 +2,7 @@
 
 ### Robótica (3º Ingeniería Telemática)
 
-[Práctica 1: Manejo del Kobuki](/README.md)
+[Práctica 1: Manejo del Kobuki](manejo/README.md)
 
 [Práctica 2: Avance y parada del Kobuki](bumper/README.md)
 
