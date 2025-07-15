@@ -10,5 +10,3 @@ En esta práctica debes crear 2 paquetes:
       - lo que le queda para completar la petición
       - y el tiempo que le está llevando realizarlo
     - Nodo cliente: Este nodo se encarga de recibir como argumento la distancia a recorrer o los radianes a girar y hará la petición al servidor, mostrando por la consola el feedback recibido
-
-3. Se deberán de crear 3 ejecutables distintos, uno para lanzar el servidor, otro para lanzar un cliente que solicite un determinado avance, y otro para lanzar un cliente con un giro dado.

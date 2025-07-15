@@ -76,6 +76,9 @@ private:
       100ms, std::bind(&MoveServer::execute_step, this));
   }
 
+  // This is simulated execution of the action.
+  // In a real robot or simulator, this would involve moving the robot.
+  // Here we just simulate the action by incrementing the completed distance/angle.
   void execute_step()
   {
     if (!current_goal_ || !rclcpp::ok()) {return;}
